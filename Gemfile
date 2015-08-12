@@ -2,6 +2,12 @@ source 'https://rubygems.org'
 
 ruby '2.2.1'
 
+gem 'devise'
+gem 'figaro', '1.0'
+gem 'pundit'
+gem 'simple_form'
+
+
 
 
 

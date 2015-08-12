@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
+  get 'tools/index'
+
+  get 'members/index'
+
   get 'contact/contact'
 
   get 'blog/blog'
