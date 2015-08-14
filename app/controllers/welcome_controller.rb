@@ -1,4 +1,4 @@
 class WelcomeController < ApplicationController
-  def homepage
+  def index
   end
 end

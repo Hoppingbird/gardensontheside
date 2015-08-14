@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Contact - Business Casual - Start Bootstrap Theme</title>
+    <title>Contact - Gardens on the Side</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -47,24 +47,38 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="/welcome/homepage.html">Gardens on the Side</a>
+                <a class="navbar-brand" href="/welcome/index.html">Gardens on the Side</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="/welcome/homepage.html">Home</a>
+                        <a href="/welcome/index.html">Home</a>
                     </li>
                     <li>
-                        <a href="/about/about.html">About</a>
+                        <a href="/about/index.html">About</a>
                     </li>
                     <li>
-                        <a href="/blog/blog.html">Blog</a>
+                        <a href="/blog/index.html">Blog</a>
                     </li>
                     <li>
-                        <a href="/contact/contact.html">Contact</a>
+                        <a href="/contacts/new.html">Contact</a>
                     </li>
+                  <li>
+                    <a href="/members/index.html">Members</a>
+                  </li>
+                  <li>
+                    <a href="/tools/index.html">Tools</a>
+                  </li>
                 </ul>
+              <div class="pull-right user-info">
+                <% if current_user %>
+                    Hello <%= current_user.name %>! <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+                <% else %>
+                    <%= link_to "Sign In", new_user_session_path %> or
+                    <%= link_to "Sign Up", new_user_registration_path %>
+                <% end %>
+              </div>
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -110,8 +124,23 @@
                         <strong>form</strong>
                     </h2>
                     <hr>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, vitae, distinctio, possimus repudiandae cupiditate ipsum excepturi dicta neque eaque voluptates tempora veniam esse earum sapiente optio deleniti consequuntur eos voluptatem.</p>
-                    <form role="form">
+                    <p> Please fill out the form and let us know how we can help. We will get back to you ASAP.</p>
+
+                      <%= simple_form_for @contact do |f| %>
+                          <%= f.error_notification %>
+
+                          <div class="form-inputs">
+                            <%= f.input :contact_name, required: true, autofocus: true %>
+                            <%= f.input :contact_email, required: true %>
+                            <%= f.input :contact_phone, required: false %>
+                            <%= f.input :contact_message, hint: "Tell s a little index what you are looking for", required: true %>
+                          </div>
+
+                          <div class="form-actions">
+                            <%= f.button :submit, "Submit" %>
+                          </div>
+                      <% end %>
+                  <form role="form">
                         <div class="row">
                             <div class="form-group col-lg-4">
                                 <label>Name</label>
