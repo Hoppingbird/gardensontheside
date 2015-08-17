@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'member_posts/index'
+
+  get 'member_posts/new'
+
+  get 'member_posts/create'
+
+  get 'member_posts/edit'
+
+  get 'member_posts/show'
+
+  get 'member_posts/destroy'
+
   devise_for :users
 
   get 'tools/index'
@@ -12,6 +24,8 @@ Rails.application.routes.draw do
   get 'about/index'
 
   get 'welcome/index'
+
+  resources :member_posts
 
   resources :contacts
 

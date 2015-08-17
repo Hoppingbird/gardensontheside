@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Contact - Gardens on the Side</title>
+  <title>About - Gardens on the Side</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -33,7 +33,7 @@
 <body>
 
 <div class="brand">Gardens on the Side</div>
-<div class="address-bar">883 Lake Dr | Snellville, GA | 678.522.6452</div>
+<div class="address-bar">883 Lake Dr | Snellville, GA 30039 | 678.522.6452</div>
 
 <!-- Navigation -->
 <nav class="navbar navbar-default" role="navigation">
@@ -89,28 +89,8 @@
 
   <div class="row">
     <div class="box">
-      <div class="col-lg-12">
-        <hr>
-        <h2 class="intro-text text-center">Contact
-          <strong>Gardens on the Side</strong>
-        </h2>
-        <hr>
-      </div>
-      <div class="col-md-8">
-        <!-- Embedded Google Map using an iframe - to select your location find it on Google maps and paste the link as the iframe src. If you want to use the Google Maps API instead then have at it! -->
-        <iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=37.0625,-95.677068&amp;spn=56.506174,79.013672&amp;t=m&amp;z=4&amp;output=embed"></iframe>
-      </div>
-      <div class="col-md-4">
-        <p>Phone:
-          <strong>678.522.6452</strong>
-        </p>
-        <p>Email:
-          <strong><a href="mailto:hoppingbird@gmail.com">hoppingbird@gmail.com</a></strong>
-        </p>
-        <p>Address:
-          <strong>883 Lake Dr
-            <br>Snellville, Ga</strong>
-        </p>
+      <div class="col-md-6">
+        <img class="img-responsive img-border-left" src="/assets/TomatoBasket.JPG" alt="">
       </div>
       <div class="clearfix"></div>
     </div>
@@ -120,27 +100,19 @@
     <div class="box">
       <div class="col-lg-12">
         <hr>
-        <h2 class="intro-text text-center">Contact
-          <strong>form</strong>
+        <h2 class="intro-text text-center">
+          <strong>Our Community</strong>
+          <p>Things people are saying and doing</p>
         </h2>
+
         <hr>
-        <p> Please fill out the form and let us know how we can help. We will get back to you ASAP.</p>
-
-        <%= simple_form_for @contact do |f| %>
-            <%= f.error_notification %>
-
-            <div class="form-inputs">
-              <%= f.input :name, required: true, autofocus: true %>
-              <%= f.input :email, required: true %>
-              <%= f.input :phone, required: false %>
-              <%= f.input :message, hint: "Tell us a little about what you are looking for", required: true %>
-            </div>
-
-            <div class="form-actions">
-              <%= f.button :submit, "Submit" %>
-            </div>
+        <%= @member_post.each do |member_post| %>
+          <%= member_post.title %>
+          <%= image_tag member_post.image.url(:medium) %>
+          <%= member_post.body %>
         <% end %>
 
+        <div class="clearfix"></div>
       </div>
     </div>
   </div>

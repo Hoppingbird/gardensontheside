@@ -2,11 +2,13 @@ source 'https://rubygems.org'
 
 ruby '2.2.1'
 
+gem 'bootstrap-sass'
 gem 'devise'
 gem 'figaro', '1.0'
 gem 'pundit'
 gem 'simple_form'
 gem 'mail_form'
+gem 'paperclip', '~> 4.3'
 
 
 
