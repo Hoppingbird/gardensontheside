@@ -118,19 +118,29 @@
         </h2>
 
         <hr>
-        <%= simple_form_for @member_post do |f| %>
-            <%= f.error_notification %>
+        <div class="form-wrapper">
+          <%= simple_form_for @member_post, html: { class: 'form-horizontal', multipart: true } do |f| %>
+              <%= f.error_notification %>
 
-            <div class="form-inputs">
-              <%= f.input :title, required: true, autofocus: true %>
-              <%= f.input :body, required: true %>
-              <%= f.input :image, hint: "Upload an image", required: false %>
-            </div>
+           <div class="row">
+             <div class="form-group">
+               <%= f.input :image, required: false %>
+             </div>
+             <div class="form-group text-center">
+               <%= f.input :title, required: true, autofocus: true %>
+             </div>
+             <br />
+              <div class="form-group text-center">
+                <%= f.input :body,required: true %>
+              </div>
+             <br />
+              <div class="form-actions text-center">
+                <%= f.button :submit, "Submit" %>
+              </div>
+          <% end %>
+          </div>
+        </div>
 
-            <div class="form-actions">
-              <%= f.button :submit, "Submit" %>
-            </div>
-        <% end %>
         <div class="clearfix"></div>
       </div>
     </div>
