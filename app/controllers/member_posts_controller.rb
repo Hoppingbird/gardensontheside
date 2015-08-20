@@ -1,7 +1,6 @@
 class MemberPostsController < ApplicationController
   def index
-    @member_post = MemberPost.all
-    #@member = User.find(@member_post.user_id)
+    @member_posts = MemberPost.all
   end
 
   def new
@@ -10,21 +9,31 @@ class MemberPostsController < ApplicationController
   end
 
   def create
-    @member_post = MemberPost.create(member_post_params)
-    @member_post.user_id = current_user.id
-    @member_post.save
+    @member_post = current_user.member_posts.build(member_post_params)        ##MemberPost.create(member_post_params)
     authorize @member_post
+    if @member_post.save
+      flash[:notice] = "Post created successuflly!"
+    else
+      flash[:notice] = "Oops something went wrong, try again please"
+    end
     redirect_to member_posts_path
   end
 
   def edit
     @member_post = MemberPost.find(params[:id])
+    #@member_post.user = current_user
   end
 
   def update
     @member_post = MemberPost.find(params[:id])
     @member_post.update(member_post_params)
-    @member_post.user_id = current_user.id
+    #@member_post.user = current_user
+    authorize @member_post
+    if @member_post.update_attributes(member_post_params)
+      flash[:notice] = "Post updated successuflly!"
+    else
+      flash[:notice] = "Oops something went wrong, try again please"
+    end
     redirect_to member_posts_path
   end
 
@@ -36,6 +45,12 @@ class MemberPostsController < ApplicationController
   def destroy
     @member_post = MemberPost.find(params[:id])
     @member_post.destroy
+    authorize @member_post
+    if @member_post.destroy
+      flash[:notice] = "Post deleted successuflly!"
+    else
+      flash[:notice] = "Oops something went wrong, try again please"
+    end
     redirect_to member_posts_path
   end
 

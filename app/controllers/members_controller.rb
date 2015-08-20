@@ -1,12 +1,9 @@
 class MembersController < ApplicationController
   def index
-    @member = User.all
-    # @member_posts = @member.MemberPost.all
+    @members = User.all
   end
 
   def show
-    @member = User.all
-    #@user = User.find(params[:id])
-    #@admin = @user.role =='admin'
+    @member = User.find(params[:id])
   end
 end

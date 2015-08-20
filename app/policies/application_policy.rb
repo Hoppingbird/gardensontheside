@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    fuser.present? && (record.user == user || user.admin?)
+    user.present? && (record.user == user || user.admin?)
   end
 
   def edit?
@@ -35,7 +35,7 @@ class ApplicationPolicy
   end
 
   def scope
-    Pundit.policy_scope!(user, record.class)
+    record.class
   end
 
   class Scope
@@ -47,7 +47,7 @@ class ApplicationPolicy
     end
 
     def resolve
-      scope
+      scope.all
     end
   end
 end

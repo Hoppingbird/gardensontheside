@@ -6,9 +6,9 @@ class User < ActiveRecord::Base
 
   has_many :member_posts
 
+
   def admin?
     role == 'admin'
-
   end
 
   def member?
