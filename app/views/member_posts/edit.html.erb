@@ -50,36 +50,7 @@
       <a class="navbar-brand" href="/welcome/index.html">Gardens on the Side</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li>
-          <a href="/welcome/index.html">Home</a>
-        </li>
-        <li>
-          <a href="/about/index.html">About</a>
-        </li>
-        <li>
-          <a href="/blog/index.html">Blog</a>
-        </li>
-        <li>
-          <a href="/contacts/new.html">Contact</a>
-        </li>
-        <li>
-          <a href="/members/index.html">Members</a>
-        </li>
-        <li>
-          <a href="/tools/index.html">Tools</a>
-        </li>
-      </ul>
-      <div class="pull-right user-info">
-        <% if current_user %>
-            Hello <%= current_user.name %>! <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-        <% else %>
-            <%= link_to "Sign In", new_user_session_path %> or
-            <%= link_to "Sign Up", new_user_registration_path %>
-        <% end %>
-      </div>
-    </div>
+    <%= render 'application/top_nav' %>
     <!-- /.navbar-collapse -->
   </div>
   <!-- /.container -->
@@ -102,25 +73,26 @@
         <div class="form-wrapper">
           <%= simple_form_for @member_post, html: { class: 'form-horizontal', multipart: true } do |f| %>
               <%= f.error_notification %>
-
-                <div class="form-group">
-                  <%= f.input :image, required: false %>
-                </div>
-                <div class="form-group text-center">
-                  <%= f.input :title, required: true, autofocus: true %>
-                </div>
-                <br />
-                <div class="form-group text-center">
-                  <%= f.input :body, required: true %>
-                </div>
-                <br />
-                <div class="form-actions text-center">
-                  <%= f.button :submit, "Submit" %>
-                </div>
-              <div class="text-center edit-links">
-                <%= link_to "Delete Post", member_post_path(@member_post), method: :delete, data: { confirm: "Are you sure you want to delete this post?" } %>
-                |
-                <%= link_to "cancel", member_posts_path %>
+              <div class="form-group">
+                  <div class="form-inputs center">
+                    <%= f.input :image, placeholder: 'Upload an image',required: true %>
+                  </div>
+                  <div class="form-group text-center">
+                    <%= f.input_field :title, placeholder: 'Title', required: true, autofocus: true %>
+                  </div>
+                  <br />
+                  <div class="form-group text-center">
+                    <%= f.input_field :body, placeholder: 'Caption/Message', required: true %>
+                  </div>
+                  <br />
+                  <div class="form-actions text-center">
+                    <%= f.button :submit, "Submit" %>
+                  </div>
+                  <div class="text-center edit-links">
+                    <%= link_to "Delete Post", member_post_path(@member_post), method: :delete, data: { confirm: "Are you sure you want to delete this post?" } %>
+                    |
+                    <%= link_to "cancel", member_posts_path %>
+                  </div>
               </div>
           <% end %>
         </div>

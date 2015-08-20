@@ -50,36 +50,7 @@
       <a class="navbar-brand" href="/welcome/index.html">Gardens on the Side</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li>
-          <a href="/welcome/index.html">Home</a>
-        </li>
-        <li>
-          <a href="/about/index.html">About</a>
-        </li>
-        <li>
-          <a href="/blog/index.html">Blog</a>
-        </li>
-        <li>
-          <a href="/contacts/new.html">Contact</a>
-        </li>
-        <li>
-          <a href="/members/index.html">Members</a>
-        </li>
-        <li>
-          <a href="/tools/index.html">Tools</a>
-        </li>
-      </ul>
-      <div class="pull-right user-info">
-        <% if current_user %>
-            Hello <%= current_user.name %>! <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-        <% else %>
-            <%= link_to "Sign In", new_user_session_path %> or
-            <%= link_to "Sign Up", new_user_registration_path %>
-        <% end %>
-      </div>
-    </div>
+    <%= render 'application/top_nav' %>
     <!-- /.navbar-collapse -->
   </div>
   <!-- /.container -->
@@ -121,15 +92,18 @@
               <%= f.error_notification %>
 
            <div class="row">
-             <div class="form-group">
-               <%= f.input :image, required: false %>
+             <div class="form-group" style="float:none; margin: 0 auto">
+               <%= f.input_field :image, required: true %>
+             </div>
+             <div class="form-group text-center" style="font-size: large;">
+               <%= f.hint "<<< Upload an image (optional) using button way over there to the left"  %>
              </div>
              <div class="form-group text-center">
-               <%= f.input :title, required: true, autofocus: true %>
+               <%= f.input_field :title, placeholder: 'Title', required: true, autofocus: true %>
              </div>
              <br />
               <div class="form-group text-center">
-                <%= f.input :body,required: true %>
+                <%= f.input_field :body, placeholder: 'Caption/Message', required: true %>
               </div>
              <br />
               <div class="form-actions text-center">

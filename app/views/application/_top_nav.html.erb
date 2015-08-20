@@ -1,22 +1,22 @@
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   <ul class="nav navbar-nav">
     <li>
-      <a href="/welcome/index.html">Home</a>
+      <%= link_to 'Home', root_path %>
     </li>
     <li>
-      <a href="/about/index.html">About</a>
+      <%= link_to 'About', about_index_path %>
     </li>
     <li>
-      <a href="/blog/index.html">Blog</a>
+      <%= link_to 'Blog', blog_index_path %>
     </li>
     <li>
-      <a href="/contacts/new.html">Contact</a>
+      <%= link_to 'Contact', new_contact_path %>
     </li>
     <li>
-      <a href="/members/index.html">Members</a>
+      <%= link_to 'Members', members_path %>
     </li>
     <li>
-      <a href="/tools/index.html">Tools</a>
+      <%= link_to 'Tools', tools_index_path %>
     </li>
   </ul>
   <div class="pull-right user-info">

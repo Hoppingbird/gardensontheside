@@ -116,6 +116,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.2.0)
+      byebug (~> 5.0)
+      pry (~> 0.10)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     pundit (1.0.1)
@@ -202,7 +205,6 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   bootstrap-sass
-  byebug
   coffee-rails (~> 4.1.0)
   devise
   figaro (= 1.0)
@@ -212,6 +214,7 @@ DEPENDENCIES
   paperclip (~> 4.3)
   pg
   pry
+  pry-byebug
   pry-rails
   pundit
   rails (= 4.2.1)

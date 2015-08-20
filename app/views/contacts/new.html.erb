@@ -50,36 +50,7 @@
       <a class="navbar-brand" href="/welcome/index.html">Gardens on the Side</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li>
-          <a href="/welcome/index.html">Home</a>
-        </li>
-        <li>
-          <a href="/about/index.html">About</a>
-        </li>
-        <li>
-          <a href="/blog/index.html">Blog</a>
-        </li>
-        <li>
-          <a href="/contacts/new.html">Contact</a>
-        </li>
-        <li>
-          <a href="/members/index.html">Members</a>
-        </li>
-        <li>
-          <a href="/tools/index.html">Tools</a>
-        </li>
-      </ul>
-      <div class="pull-right user-info">
-        <% if current_user %>
-            Hello <%= current_user.name %>! <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-        <% else %>
-            <%= link_to "Sign In", new_user_session_path %> or
-            <%= link_to "Sign Up", new_user_registration_path %>
-        <% end %>
-      </div>
-    </div>
+    <%= render 'application/top_nav' %>
     <!-- /.navbar-collapse -->
   </div>
   <!-- /.container -->
@@ -125,22 +96,33 @@
         </h2>
         <hr>
         <p> Please fill out the form and let us know how we can help. We will get back to you ASAP.</p>
-
-        <%= simple_form_for @contact do |f| %>
+        <div class="form-wrapper">
+          <%= simple_form_for @contact do |f| %>
             <%= f.error_notification %>
 
-            <div class="form-inputs">
-              <%= f.input :name, required: true, autofocus: true %>
-              <%= f.input :email, required: true %>
-              <%= f.input :phone, required: false %>
-              <%= f.input :message, hint: "Tell us a little about what you are looking for", required: true %>
-            </div>
+            <div class="form-group">
+              <div class="form-group text-center">
+                <%= f.input_field :name, placeholder: 'Name', required: true, autofocus: true %>
+              </div>
+              <div class="form-group text-center">
+                <%= f.input_field :email, placeholder: 'Email', required: true %>
+              </div>
+              <div class="form-group text-center">
+                <%= f.input_field :phone, placeholder: 'Phone', required: false %>
+              </div>
+              <div class="form-group text-center">
+                <%= f.input_field :message, placeholder: 'Ask a question', required: true %>
+              </div>
+              <div class="form-group text-center">
+                <%= f.hint 'Tell us a little about what you are looking for' %>
+              </div>
 
-            <div class="form-actions">
+            </div>
+            <div class="form-actions text-center">
               <%= f.button :submit, "Submit" %>
             </div>
         <% end %>
-
+       </div>
       </div>
     </div>
   </div>

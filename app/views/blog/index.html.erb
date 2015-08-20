@@ -50,36 +50,7 @@
                 <a class="navbar-brand" href="/welcome/index.html">Gardens on the Side</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                  <li>
-                    <a href="/welcome/index.html">Home</a>
-                  </li>
-                  <li>
-                    <a href="/about/index.html">About</a>
-                  </li>
-                  <li>
-                    <a href="/blog/index.html">Blog</a>
-                  </li>
-                  <li>
-                    <a href="/contacts/new.html">Contact</a>
-                  </li>
-                  <li>
-                    <a href="/members/index.html">Members</a>
-                  </li>
-                  <li>
-                    <a href="/tools/index.html">Tools</a>
-                  </li>
-                </ul>
-              <div class="pull-right user-info">
-                <% if current_user %>
-                    Hello <%= current_user.name %>! <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-                <% else %>
-                    <%= link_to "Sign In", new_user_session_path %> or
-                    <%= link_to "Sign Up", new_user_registration_path %>
-                <% end %>
-              </div>
-            </div>
+          <%= render 'application/top_nav' %>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->

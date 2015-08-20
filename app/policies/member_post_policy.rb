@@ -1,0 +1,3 @@
+class MemberPostPolicy < ApplicationPolicy
+
+end
