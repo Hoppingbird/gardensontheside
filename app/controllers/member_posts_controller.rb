@@ -26,8 +26,6 @@ class MemberPostsController < ApplicationController
 
   def update
     @member_post = MemberPost.find(params[:id])
-    @member_post.update(member_post_params)
-    #@member_post.user = current_user
     authorize @member_post
     if @member_post.update_attributes(member_post_params)
       flash[:notice] = "Post updated successuflly!"
@@ -44,8 +42,8 @@ class MemberPostsController < ApplicationController
 
   def destroy
     @member_post = MemberPost.find(params[:id])
-    @member_post.destroy
     authorize @member_post
+    @member_post.destroy
     if @member_post.destroy
       flash[:notice] = "Post deleted successuflly!"
     else
