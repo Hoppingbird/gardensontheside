@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get 'blog/index'
 
+  post 'member/edit', to: 'members#edit', as: :member_edit
+
   resources :contacts, only: [:new, :create]
 
   resources :members

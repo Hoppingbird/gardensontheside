@@ -39,8 +39,12 @@
                     <% date = m.created_at %>
                     <strong><%= m.name %> </strong> <%= "joined: #{date.strftime('%d/%m/%Y')}" %>
                     <% if current_user.admin? %>
-                        <%= link_to m.role %>
-                    <% end%>
+                        <%= form_tag member_edit_path do %>
+                            <%= hidden_field_tag :id, m.id %>
+                            <%= select_tag :role, options_for_select(["member", "admin"], m.role) %>
+                            <%= submit_tag :update %>
+                        <% end %>
+                    <% end %>
                 <hr>
                 <% end %>
               </h2>
@@ -61,8 +65,8 @@
           </div>
         </div>
        </div>
-    </div>
- </div>
+     </div>
+   </div>
 
 </div>
 <!-- /.container -->
