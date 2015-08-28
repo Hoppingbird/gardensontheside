@@ -1,7 +1,7 @@
 class MembersController < ApplicationController
   def index
     @members = User.all
-    @user = current_user
+    @member = current_user
   end
 
   def show

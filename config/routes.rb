@@ -16,6 +16,10 @@ Rails.application.routes.draw do
 
   get 'tools/index'
 
+  resources :zips
+
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

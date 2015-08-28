@@ -10,6 +10,7 @@ gem 'simple_form'
 gem 'mail_form'
 gem 'paperclip', '~> 4.3'
 gem 'best_in_place', '~> 3.0.1'
+gem 'active_model_serializers'
 
 
 
