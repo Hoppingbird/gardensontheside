@@ -1,8 +1,14 @@
+require 'rest-client'
+
 class ToolsController < ApplicationController
 
 
+
   def index
-    @zips = Zip.all
+    if(params[:zip])
+      @zip = RestClient.get(build_uri(params[:zip]))
+    end
+
   end
 
   def show
@@ -11,5 +17,10 @@ class ToolsController < ApplicationController
 
   def new
     #@zip =Zip.new
+  end
+
+  def build_uri(zip)
+    request_uri = 'http://planthardiness.ars.usda.gov/PHZMWeb/ZipProxy.ashx?ZipCode='
+    "#{request_uri}#{zip}"
   end
 end

@@ -16,11 +16,16 @@
       </div>
       <div class="col-md-6">
         <p>Use the form below to look up your grow zone based on your zip code</p>
+        <%= form_tag('/tools/index', method: 'get') do %>
+            <%= label_tag(:zip, 'Search for:') %>
+            <%= text_field_tag(:zip) %>
+            <%= submit_tag('Search') %>
+        <% end %>
+        <div class="clearfix"></div>
+        <%= @zip %>
       </div>
+
       <div class="clearfix"></div>
-
-        <%= insert form here %>
-
 
       </div>
     </div>
@@ -28,10 +33,7 @@
 
   <div class="row">
     <div class="box">
-      <% @zips.each do |zip| %>
-          <p> <%= zip.zip_code %> </p>
-          <p> <%= zip.grow_zone %> </p>
-      <% end %>
+
     </div>
   </div>
 
